@@ -1,0 +1,231 @@
+﻿@model VMDavaEkle
+
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Yeni Dava
+                </h2>
+            </div>
+            <div class="body">
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "davaekle" }))
+                {
+                    <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                    <label>Şehir</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                    <select id="SehirId" name="SehirId" class="form-control show-tick" data-live-search="true" data-size="5"></select>
+                                </div>
+                                <div class="col-xs-1 padding-0">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn bg-teal waves-effect dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <i class="material-icons">playlist_add</i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a id="sehirEkle" class=" waves-effect waves-block">Ekle</a>
+                                            </li>
+                                            <li>
+                                                <a id="sehirDuzenle" class=" waves-effect waves-block">Düzenle</a>
+                                            </li>
+                                            <li role="separator" class="divider"></li>
+                                            <li>
+                                                <a id="sehirSil" class=" waves-effect waves-block">Sil</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                    <label>Adliye</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                    <select id="AdliyeId" class="form-control show-tick" data-live-search="true" data-size="5"></select>
+                                </div>
+                                <div class="col-xs-1 padding-0">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn bg-teal waves-effect dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <i class="material-icons">playlist_add</i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a id="adliyeEkle" class=" waves-effect waves-block">Ekle</a>
+                                            </li>
+                                            <li>
+                                                <a id="adliyeDuzenle" class=" waves-effect waves-block">Düzenle</a>
+                                            </li>
+                                            <li role="separator" class="divider"></li>
+                                            <li>
+                                                <a id="adliyeSil" class=" waves-effect waves-block">Sil</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                    <label>Dosya</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                    <select id="DosyaId" class="form-control show-tick" data-live-search="true" data-size="5"></select>
+                                </div>
+                                <div class="col-xs-1 padding-0">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn bg-teal waves-effect dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <i class="material-icons">playlist_add</i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a id="dosyaEkle" class=" waves-effect waves-block">Ekle</a>
+                                            </li>
+                                            <li>
+                                                <a id="dosyaDuzenle" class=" waves-effect waves-block">Düzenle</a>
+                                            </li>
+                                            <li role="separator" class="divider"></li>
+                                            <li>
+                                                <a id="dosyaSil" class=" waves-effect waves-block">Sil</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                    <label>Birim</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                    <select id="BirimDaireId" name="BirimDaireId" class="form-control show-tick" data-live-search="true" data-size="5" required></select>
+                                </div>
+                                <div class="col-xs-1 padding-0">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn bg-teal waves-effect dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <i class="material-icons">playlist_add</i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a id="birimEkle" class=" waves-effect waves-block">Ekle</a>
+                                            </li>
+                                            <li>
+                                                <a id="birimDuzenle" class=" waves-effect waves-block">Düzenle</a>
+                                            </li>
+                                            <li role="separator" class="divider"></li>
+                                            <li>
+                                                <a id="birimSil" class=" waves-effect waves-block">Sil</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                    <label>Durum</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                    <select id="DavaDurumId" name="DavaDurumId" class="form-control show-tick" data-live-search="true" data-size="5"></select>
+                                </div>
+                                <div class="col-xs-1 padding-0">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn bg-teal waves-effect dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <i class="material-icons">playlist_add</i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a id="durumEkle" class=" waves-effect waves-block">Ekle</a>
+                                            </li>
+                                            <li>
+                                                <a id="durumDuzenle" class=" waves-effect waves-block">Düzenle</a>
+                                            </li>
+                                            <li role="separator" class="divider"></li>
+                                            <li>
+                                                <a id="durumSil" class=" waves-effect waves-block">Sil</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @*Right*@
+
+                        <div class="col-md-6 col-xs-12">
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                    <label>Dosya No</label>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                    <div class="form-group" style="margin:0">
+                                        <div class="form-line">
+                                            @Html.TextBoxFor(x => x.DosyaNo, new { @class = "form-control", required = "required" })
+                                        </div>
+                                        @Html.ValidationMessageFor(x => x.DosyaNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                    <label>Müvekkil</label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                    <select id="drpMuvekkil" name="TCKimlikNo" class="form-control show-tick" data-live-search="true" data-size="5"></select>
+                                </div>
+                                <div class="col-xs-1 padding-0">
+                                    <a id="durumEkle" href="/Admin/Muvekkil/Ekle" class="btn bg-teal waves-effect btn-xs">
+                                        <i class="material-icons">person_add</i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                    <label>Açılış Tarihi</label>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input id="AcilisTarihi" name="AcilisTarihi" type="text" class="datepicker form-control" value="@DateTime.Now.Year-@DateTime.Now.Month-@DateTime.Now.Day">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-11">
+                                    <button type="submit" class="btn bg-teal waves-effect pull-right">
+                                        <i class="material-icons">add</i>
+                                        <span>Dava Ekle</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Assets/BSB/js/davaAdd.js"></script>
+    <script>
+        sehirler();
+        muvekkiller();
+        durumlar();
+    </script>
+}

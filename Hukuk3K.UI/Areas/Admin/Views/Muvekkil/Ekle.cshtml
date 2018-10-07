@@ -1,0 +1,78 @@
+﻿@model VMMuvekkilEkle
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Yeni Müvekkil
+                </h2>
+            </div>
+            <div class="body">
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { gelen = "davaekle" }))
+                {
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="email_address">TC Kimlik Numarası</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(x => x.TCKimlikNo, new { @class = "form-control", maxlength = 11, minlength = 11, required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="password">Adı Soyadı</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(x => x.AdSoyad, new { @class = "form-control", minlength = 5, required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="email_address">Telefon Numarası</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(x => x.Tel, new { @class = "form-control", type = "tel", required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="password">E-Posta Adresi</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(x => x.EMail, new { @class = "form-control", minlength = 5, required = "required", type = "email" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="email_address">Adres</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(x => x.Adres, new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <button type="submit" class="btn btn-primary m-t-15 waves-effect">Kaydet</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

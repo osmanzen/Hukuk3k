@@ -1,0 +1,87 @@
+﻿@model Dava
+@{
+    ViewBag.Title = "Dava Görüntüle";
+    Layout = "~/Areas/Portal/Views/Shared/_PortalLayout.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="body">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    @{bool active = true; }
+                    @foreach (var baslik in Model.DavaBasliklari.OrderBy(x => x.DavaBaslikAdi))
+                    {
+                        if (active)
+                        {
+                            active = false;
+                            <li role="presentation" class="active">
+                                <a href="#@baslik.DavaBaslikId" data-toggle="tab">
+                                    <i class="material-icons">folder</i> @baslik.DavaBaslikAdi
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li role="presentation" class="">
+                                <a href="#@baslik.DavaBaslikId" data-toggle="tab">
+                                    <i class="material-icons">folder</i> @baslik.DavaBaslikAdi
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    @{string tab = "in active"; }
+                    @foreach (var baslik in Model.DavaBasliklari.OrderBy(x => x.DavaBaslikAdi))
+                    {
+                        <div role="tabpanel" class="tab-pane fade @tab" id="@baslik.DavaBaslikId">
+                            @if (baslik.DavaDosyalari.Count > 0)
+                            {
+                                <div class="row">
+                                    <div class="col-xs-4 col-md-2">
+                                        <div class="thumbnail">
+                                            <a href="/Portal/Davalar/Evraklar/@baslik.DavaBaslikId">
+                                                <img src="~/Assets/images/tumunugoruntule.png" />
+                                            </a>
+                                            <div class="caption text-center">
+                                                <a href="/Portal/Davalar/Evraklar/@baslik.DavaBaslikId"> Tümünü Görüntüle </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @foreach (var dosya in baslik.DavaDosyalari.OrderByDescending(x => x.EklemeTarihi))
+                                    {
+                                        <div class="col-xs-4 col-md-2">
+                                            <div class="thumbnail">
+                                                <a href="~/Assets/DavaPDF/@dosya.Url">
+                                                    <img src="~/Assets/images/filepng.png" />
+                                                </a>
+                                                <div class="caption text-center">
+                                                    <a href="~/Assets/DavaPDF/@dosya.Url">
+                                                        @dosya.DavaDosyaAdi
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                            }
+                            else
+                            {
+                                <div class="alert alert-warning alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    Başlığa ait Dosya Bulunamadı.
+                                </div>
+                            }
+                        </div>
+                        tab = "";
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

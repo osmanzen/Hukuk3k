@@ -1,0 +1,99 @@
+﻿@model ICollection<Dava>
+@{
+    ViewBag.Title = "Listele";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Dava Listesi
+                </h2>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="ui celled table js-basic-example dataTable" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Dosya Numarası</th>
+                                <th>Müvekkil</th>
+                                <th>Şehir</th>
+                                <th>Adliye</th>
+                                <th>Dosya</th>
+                                <th>Birim</th>
+                                <th>Açılış Tarihi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var dava in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info btn-block dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="/Admin/Dava/DavaDuzenle/@dava.DavaId" class=" waves-effect waves-block">Düzenle</a>
+                                                </li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>
+                                                    <a href="/Admin/Dava/DavaSil/@dava.DavaId" class="waves-effect waves-block davasil">Sil</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="text-capitalize">@dava.DosyaNo</td>
+                                    <td class="text-capitalize">@dava.Kullanici.AdSoyad</td>
+                                    <td class="text-capitalize">@dava.BirimDaire.DavaTipi.Adliye.Sehir.SehirAdi</td>
+                                    <td class="text-capitalize">@dava.BirimDaire.DavaTipi.Adliye.AdliyeAdi</td>
+                                    <td class="text-capitalize">@dava.BirimDaire.DavaTipi.DavaTipiAdi</td>
+                                    <td class="text-capitalize">@dava.BirimDaire.BirimDaireAdi</td>
+                                    <td>@dava.AcilisTarihi.ToShortDateString()</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section styles{
+    <link href="~/Assets/BSB/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.semanticui.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+
+    <script src="~/Assets/BSB/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    <script src="~/Assets/BSB/js/pages/tables/jquery-datatable.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.datatable').dataTable({
+                bSort: false,
+                aoColumns: [{ sWidth: "45%" }, { sWidth: "45%" }, { sWidth: "10%", bSearchable: false, bSortable: false }],
+                "scrollY": "200px",
+                "scrollCollapse": true,
+                "info": true,
+                "paging": true
+            });
+        });
+    </script>
+}
+

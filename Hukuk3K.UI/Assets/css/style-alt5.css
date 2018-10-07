@@ -1,0 +1,370 @@
+.top,
+.top .widget_nav_menu ul .sub-menu>li>a {
+    background-color: #f7f7f7;
+}
+
+.top {
+    border-bottom-color: #efefef;
+}
+
+.top .widget_nav_menu ul .sub-menu>li:first-of-type>a {
+    border-color: #f7f7f7;
+}
+
+.top,
+.top .icon-box .fa,
+.top .icon-box__title,
+.top .icon-box__subtitle,
+.top .social-icons__link,
+.top .widget_nav_menu ul>li>a,
+.top .widget_nav_menu ul .sub-menu>li>a {
+    color: #999999;
+}
+
+.boxed-container>header,
+.header__left-widgets,
+.header__logo,
+.header__right-widgets {
+    background-color: #ffffff;
+}
+
+@media (max-width: 991px) {
+    .main-navigation .sub-menu>li>a {
+        background-color: #ffffff;
+    }
+}
+
+.header,
+.header .icon-box__title {
+    color: #777777;
+}
+
+.header .icon-box__subtitle {
+    color: #989898;
+}
+
+.breadcrumbs {
+    background-color: #ffffff;
+}
+
+.breadcrumbs a {
+    color: #999999;
+}
+
+.breadcrumbs span:first-of-type>a::before {
+    color: #cccccc;
+}
+
+.breadcrumbs a:hover,
+.breadcrumbs span:first-of-type>a:hover::before {
+    color: #787878;
+}
+
+.breadcrumbs span>span {
+    color: #777777;
+}
+
+.main-navigation,
+.jumbotron,
+.jumbotron__control,
+.testimonial__carousel--left,
+.testimonial__carousel--right,
+body.woocommerce-page span.onsale,
+.woocommerce span.onsale {
+    background-color: #444444;
+}
+
+@media (max-width: 991px) {
+    .main-navigation .sub-menu>li>a {
+        background-color: #595959;
+    }
+}
+
+.main-navigation,
+.jumbotron__control,
+.testimonial__carousel--left,
+.testimonial__carousel--right {
+    border-color: #444444;
+}
+
+@media (min-width: 992px) {
+    .main-navigation .sub-menu {
+        border-color: #444444;
+    }
+}
+
+@media (min-width: 992px) {
+    .main-navigation>li:hover>a::after,
+    .main-navigation>li:focus>a::after {
+        background-color: #ffffff;
+    }
+}
+
+.main-navigation>li>a {
+    color: #ffffff;
+}
+
+@media (min-width: 992px) {
+    .main-navigation .menu-item-has-children::after,
+    .main-navigation>li:hover>a,
+    .main-navigation>li:focus>a {
+        color: #ffffff;
+    }
+}
+
+@media (min-width: 992px) {
+    .main-navigation .sub-menu>li>a,
+    .main-navigation ul.sub-menu {
+        background-color: #aaa897;
+    }
+}
+
+@media (min-width: 992px) {
+    .main-navigation .sub-menu>li>a,
+    .main-navigation .sub-menu .sub-menu>li>a {
+        border-color: #9c9a86;
+    }
+}
+
+.main-navigation .sub-menu>li:first-of-type {
+    border-color: #9c9a86;
+}
+
+@media (min-width: 992px) {
+    .main-navigation .sub-menu>li>a:hover {
+        background-color: #9c9a86;
+    }
+}
+
+@media (min-width: 992px) {
+    .main-navigation .sub-menu>li>a,
+    .main-navigation .sub-menu>li>a:hover,
+    .main-navigation .sub-menu .menu-item-has-children::after {
+        color: #ffffff;
+    }
+}
+
+@media (max-width: 991px) {
+    .main-navigation>li:hover>a,
+    .main-navigation>li:focus>a,
+    .main-navigation .sub-menu>li>a:hover {
+        color: #aaa897;
+    }
+}
+
+.main-title {
+    background-color: #f7f7f7;
+}
+
+.main-title {
+    background-image: url("../images/pattern-background.png");
+}
+
+.main-title h1,
+.main-title h2 {
+    color: #333333;
+}
+
+.main-title h3 {
+    color: #999999;
+}
+
+body,
+.widget_pw_icon_box .icon-box__subtitle,
+.latest-news__excerpt {
+    color: #999999;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hentry__title,
+.hentry__title a,
+.page-box__title a {
+    color: #45423d;
+}
+
+a,
+hr.hr-quote::after,
+.top .social-icons__link:hover,
+.top .icon-box:hover,
+.main-navigation>.current-menu-item>a,
+.jumbotron-content__headline,
+.more-link,
+.latest-news--more-news,
+.latest-news--more-news::after,
+.testimonial__author-description,
+.sidebar .widget_nav_menu ul>li>a,
+.main-navigation>.current-menu-item>a:hover,
+.top a.icon-box:hover .fa,
+.top a.icon-box:hover .icon-box__title,
+.top a.icon-box:hover .icon-box__subtitle,
+.header .icon-box:hover .fa,
+.person-profile__social_icon:hover,
+.latest-news__title a:hover,
+.latest-news--inline:hover .latest-news__title,
+.footer .icon-container:hover,
+.footer-bottom a:hover,
+.top .widget_nav_menu ul>li>a:hover,
+.top .widget_nav_menu ul>li>a:focus,
+.top .widget_nav_menu ul .sub-menu>li>a:hover,
+.top .widget_nav_menu ul .sub-menu>li>a:focus,
+body.woocommerce-page ul.products li.product a:hover img,
+.woocommerce ul.products li.product a:hover img,
+body.woocommerce-page ul.products li.product .price,
+.woocommerce ul.products li.product .price,
+body.woocommerce-page .star-rating,
+.woocommerce .star-rating,
+body.woocommerce-page div.product p.price,
+body.woocommerce-page p.stars a,
+body.woocommerce-page ul.product_list_widget .amount,
+.woocommerce.widget_shopping_cart .total .amount {
+    color: #aaa897;
+}
+
+.sidebar .widget_nav_menu ul>li>a:hover {
+    color: #9c9a86;
+}
+
+a:hover,
+a:focus {
+    color: #84816c;
+}
+
+.latest-news__date,
+.entry-content .icon-box .fa,
+.person-profile__tag,
+.navbar-toggle,
+.widget_search .search-submit,
+.sidebar .widget_nav_menu ul>li.current-menu-item a,
+body.woocommerce-page .widget_shopping_cart_content .buttons .checkout,
+body.woocommerce-page button.button.alt,
+body.woocommerce-page div.product .woocommerce-tabs ul.tabs li.active,
+body.woocommerce-page .woocommerce-error a.button,
+body.woocommerce-page .woocommerce-info a.button,
+body.woocommerce-page .woocommerce-message a.button,
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+body.woocommerce-page #payment #place_order,
+body.woocommerce-page #review_form #respond input#submit,
+.woocommerce button.button.alt:disabled,
+.woocommerce button.button.alt:disabled:hover,
+.woocommerce button.button.alt:disabled[disabled],
+.woocommerce button.button.alt:disabled[disabled]:hover {
+    background-color: #aaa897;
+}
+
+@media (min-width: 992px) {
+    .main-navigation .current-menu-item>a::after,
+    .main-navigation>.current-menu-item>a:hover::after {
+        background-color: #aaa897;
+    }
+}
+
+.navbar-toggle:hover,
+.widget_search .search-submit:hover,
+.widget_search .search-submit:focus,
+body.woocommerce-page .widget_shopping_cart_content .buttons .checkout:hover,
+body.woocommerce-page button.button.alt:hover,
+body.woocommerce-page .woocommerce-error a.button:hover,
+body.woocommerce-page .woocommerce-info a.button:hover,
+body.woocommerce-page .woocommerce-message a.button:hover,
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button:hover,
+body.woocommerce-page #payment #place_order:hover,
+body.woocommerce-page #review_form #respond input#submit:hover {
+    background-color: #9c9a86;
+}
+
+.person-profile__content,
+.btn-primary,
+.pagination .prev,
+.pagination .next,
+.entry-content .icon-box:hover,
+.logo-panel img:hover,
+body.woocommerce-page .widget_shopping_cart_content .buttons .checkout {
+    border-color: #aaa897;
+}
+
+.btn-primary,
+body.woocommerce-page nav.woocommerce-pagination ul li .prev,
+body.woocommerce-page nav.woocommerce-pagination ul li .next,
+.pagination .prev,
+.pagination .next {
+    background: #aaa897 linear-gradient(to bottom, #aaa897, #a6a392);
+}
+
+.btn-primary:hover,
+body.woocommerce-page nav.woocommerce-pagination ul li .prev:hover,
+body.woocommerce-page nav.woocommerce-pagination ul li .next:hover,
+.pagination .prev:hover,
+.pagination .next:hover {
+    background: #9c9a86;
+}
+
+.btn-primary:hover,
+.pagination .prev:hover,
+.pagination .next:hover {
+    border-color: #9c9a86;
+}
+
+.footer-top {
+    background-image: url("../images/footer_img.png");
+}
+
+.footer-top {
+    background-color: #444444;
+}
+
+.footer-top__headings {
+    color: #ffffff;
+}
+
+.footer-top,
+.footer-top .textwidget {
+    color: #b2b1b5;
+}
+
+.footer-top .widget_nav_menu ul>li>a {
+    color: #b2b1b5;
+}
+
+.footer-bottom {
+    background-color: #393640;
+}
+
+.footer-bottom {
+    color: #999999;
+}
+
+.footer-bottom a {
+    color: #ffffff;
+}
+
+@media (min-width: 992px) {
+    .header__logo img {
+        margin-top: 5px;
+    }
+}
+
+.style1 {
+	color: #aaa897;
+}
+
+.open-position:hover .open-position__content-container { 
+	border-left-color: #aaa897; 
+}
+
+.legalpress-table thead th { 
+	background-color: #aaa897; 
+}
+
+.style10 {
+	padding: 30px; 
+	background-color:#aaa897;
+}
+
+.number-counter__icon {
+    color: #aaa897;
+}

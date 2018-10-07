@@ -1,0 +1,100 @@
+﻿@model Hukuk3K.UI.Areas.Admin.Models.VMLogin
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>3K Hukuk | Portal Girişi</title>
+    <!-- Favicon-->
+    <link rel="icon" href="~/Assets/BSB/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="~/Assets/BSB/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="~/Assets/BSB/plugins/node-waves/waves.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="~/Assets/BSB/plugins/animate-css/animate.css" rel="stylesheet" />
+    <!-- Custom Css -->
+    <link href="~/Assets/BSB/css/style.css" rel="stylesheet" />
+</head>
+<body class="login-page" style="background-color:#607d8b">
+    <div class="login-box">
+        <div class="logo">
+            <a href="javascript:void(0);"><b>3K</b> Hukuk Portal</a>
+        </div>
+        <div class="card">
+            <div class="body">
+                @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { id = "girisYap" }))
+                {
+                    <div class="msg">Portal İçin Giriş Yapın</div>
+                    if (TempData["hata"] != null)
+                    {
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            @TempData["hata"].ToString()
+                        </div>
+                    }
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            @Html.TextBoxFor(x => x.TCKimlikNo, new { @class = "form-control", placeholder = "TC Kimlik Numarası", type = "number", required = "required" })
+                        </div>
+                        @Html.ValidationMessageFor(x => x.TCKimlikNo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control", placeholder = "Şifre", type = "password", required = "required" })
+                        </div>
+                        @Html.ValidationMessageFor(x => x.Sifre, "", new { @class = "text-danger", required = "required" })
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-block bg-blue-grey waves-effect" type="submit">Giriş Yap</button>
+                    </div>
+                    <hr />
+                    <div class="row text-center">
+                        <a href="~/Admin/Login/Index" style="color:Background"> Admin Girişi</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- Jquery Core Js -->
+    <script src="~/Assets/BSB/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="~/Assets/BSB/plugins/bootstrap/js/bootstrap.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="~/Assets/BSB/plugins/node-waves/waves.js"></script>
+    <!-- Validation Plugin Js -->
+    <script src="~/Assets/BSB/plugins/jquery-validation/jquery.validate.js"></script>
+    <!-- Custom Js -->
+    <script src="~/Assets/BSB/js/admin.js"></script>
+    <script src="~/Assets/BSB/js/pages/examples/sign-in.js"></script>
+    @*<script>
+            $('button').click(function () {
+                $('button').prop('disabled', true);
+                $('#girisYap').submit();
+            });
+        </script>*@
+
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            margin: 0;
+        }
+    </style>
+</body>
+</html>

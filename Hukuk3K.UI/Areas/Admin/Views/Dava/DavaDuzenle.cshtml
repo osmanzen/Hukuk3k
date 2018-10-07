@@ -1,0 +1,457 @@
+﻿@model Dava
+@{
+    ViewBag.Title = "DavaDuzenle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{string isEdit = (TempData["uploadStatus"] == null) ? "active" : "";}
+@{string isUpload = (TempData["uploadStatus"] != null) ? "active" : "";}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="@isEdit">
+                        <a href="#home_with_icon_title" data-toggle="tab">
+                            <i class="material-icons">library_books</i> Dava Bilgileri
+                        </a>
+                    </li>
+                    <li role="presentation" class="@isUpload">
+                        <a href="#profile_with_icon_title" data-toggle="tab">
+                            <i class="material-icons">file_upload</i> Dosya Ekle
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="body">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in @isEdit" id="home_with_icon_title">
+                        @using (Html.BeginForm("DavaDuzenle", "Dava", FormMethod.Post, new { id = "davaguncelle" }))
+                        {
+                            @Html.HiddenFor(x => x.DavaId);
+
+                            if (TempData["hata"] != null)
+                            {
+                                <div class="alert alert-warning alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    @TempData["hata"].ToString()
+                                </div>
+                            }
+
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                            <label>Şehir</label>
+                                        </div>
+                                        <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                            <select id="SehirId" name="SehirId" class="form-control show-tick" data-live-search="true" data-size="5">
+                                                @foreach (var sehir in TempData["sehirler"] as List
+<Sehir>
+)
+                                                {
+                                                    <option value="@sehir.SehirId">@sehir.SehirAdi</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-1 padding-0">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn bg-teal waves-effect dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <i class="material-icons">playlist_add</i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a id="sehirEkle" class=" waves-effect waves-block">Ekle</a>
+                                                    </li>
+                                                    <li>
+                                                        <a id="sehirDuzenle" class=" waves-effect waves-block">Düzenle</a>
+                                                    </li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li>
+                                                        <a id="sehirSil" class=" waves-effect waves-block">Sil</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                            <label>Adliye</label>
+                                        </div>
+                                        <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                            <select id="AdliyeId" class="form-control show-tick" data-live-search="true" data-size="5">
+                                                @foreach (var adliye in TempData["adliyeler"] as List
+<Adliye>
+)
+                                                {
+                                                    <option value="@adliye.AdliyeId">@adliye.AdliyeAdi</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-1 padding-0">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn bg-teal waves-effect dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <i class="material-icons">playlist_add</i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a id="adliyeEkle" class=" waves-effect waves-block">Ekle</a>
+                                                    </li>
+                                                    <li>
+                                                        <a id="adliyeDuzenle" class=" waves-effect waves-block">Düzenle</a>
+                                                    </li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li>
+                                                        <a id="adliyeSil" class=" waves-effect waves-block">Sil</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                            <label>Dosya</label>
+                                        </div>
+                                        <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                            <select id="DosyaId" class="form-control show-tick" data-live-search="true" data-size="5">
+                                                @foreach (var davaTipi in TempData["dosyalar"] as List
+<DavaTipi>
+)
+                                                {
+                                                    <option value="@davaTipi.DavaTipiId">@davaTipi.DavaTipiAdi</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-1 padding-0">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn bg-teal waves-effect dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <i class="material-icons">playlist_add</i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a id="dosyaEkle" class=" waves-effect waves-block">Ekle</a>
+                                                    </li>
+                                                    <li>
+                                                        <a id="dosyaDuzenle" class=" waves-effect waves-block">Düzenle</a>
+                                                    </li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li>
+                                                        <a id="dosyaSil" class=" waves-effect waves-block">Sil</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                            <label>Birim</label>
+                                        </div>
+                                        <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                            <select id="BirimDaireId" name="BirimDaireId" class="form-control show-tick" data-live-search="true" data-size="5" required>
+                                                @foreach (var birim in TempData["birimler"] as List
+<BirimDaire>
+)
+                                                {
+                                                    <option value="@birim.BirimDaireId">@birim.BirimDaireAdi</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-1 padding-0">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn bg-teal waves-effect dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <i class="material-icons">playlist_add</i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a id="birimEkle" class=" waves-effect waves-block">Ekle</a>
+                                                    </li>
+                                                    <li>
+                                                        <a id="birimDuzenle" class=" waves-effect waves-block">Düzenle</a>
+                                                    </li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li>
+                                                        <a id="birimSil" class=" waves-effect waves-block">Sil</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                            <label>Durum</label>
+                                        </div>
+                                        <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                            <select id="DavaDurumId" name="DavaDurumId" class="form-control show-tick" data-live-search="true" data-size="5">
+                                                @foreach (var durum in TempData["durumlar"] as List
+<DavaDurum>
+)
+                                                {
+                                                    <option value="@durum.DavaDurumId">@durum.DavaDurumAdi</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-1 padding-0">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn bg-teal waves-effect dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <i class="material-icons">playlist_add</i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a id="durumEkle" class=" waves-effect waves-block">Ekle</a>
+                                                    </li>
+                                                    <li>
+                                                        <a id="durumDuzenle" class=" waves-effect waves-block">Düzenle</a>
+                                                    </li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li>
+                                                        <a id="durumSil" class=" waves-effect waves-block">Sil</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*Right*@
+
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                            <label>Dosya No</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                            <div class="form-group" style="margin:0">
+                                                <div class="form-line">
+                                                    @Html.TextBoxFor(x => x.DosyaNo, new { @class = "form-control", required = "required" })
+                                                </div>
+                                                @Html.ValidationMessageFor(x => x.DosyaNo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                            <label>Müvekkil</label>
+                                        </div>
+                                        <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                            <select id="drpMuvekkil" name="TCKimlikNo" class="form-control show-tick" data-live-search="true" data-size="5">
+                                                @foreach (var muvekkil in TempData["muvekkiller"] as List
+<Kullanici>
+)
+                                                {
+                                                    <option value="@muvekkil.TCKimlikNo">@muvekkil.TCKimlikNo @muvekkil.AdSoyad</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-1 padding-0">
+                                            <a id="durumEkle" href="/Admin/Muvekkil/Ekle" class="btn bg-teal waves-effect btn-xs">
+                                                <i class="material-icons">person_add</i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="row clearfix">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                            <label>Açılış Tarihi</label>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input id="AcilisTarihi" name="AcilisTarihi" type="text" class="datepicker form-control" value="@Model.AcilisTarihi.Year-@Model.AcilisTarihi.Month-@Model.AcilisTarihi.Day">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12"></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-11">
+                                            <button type="submit" class="btn bg-teal waves-effect pull-right">
+                                                <i class="material-icons">loop</i>
+                                                <span>Güncelle</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade in @isUpload" id="profile_with_icon_title" style="height:100vh">
+                        @using (Html.BeginForm("DosyaUpload", "Dava", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            if (TempData["hata"] != null)
+                            {
+                                <div class="alert alert-warning alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    @TempData["hata"].ToString()
+                                </div>
+                            }
+
+                            if (TempData["uploadStatus"] != null)
+                            {
+                                <div class="alert alert-success alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    @TempData["uploadStatus"].ToString()
+                                </div>
+                            }
+
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                            <label>Dava Başlığı</label>
+                                        </div>
+                                        <div class="col-lg-7 col-md-7 col-sm-11 col-xs-10">
+                                            <select id="drpDavaBaslik" name="DavaBaslikId" class="form-control show-tick" data-live-search="true" data-size="5">
+                                                @foreach (var baslik in TempData["basliklar"] as List<DavaBaslik>)
+                                                {
+                                                    <option value="@baslik.DavaBaslikId">@baslik.DavaBaslikAdi</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-1 padding-0">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn bg-teal waves-effect dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <i class="material-icons">playlist_add</i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a id="davaBaslikEkle" class=" waves-effect waves-block">Ekle</a>
+                                                    </li>
+                                                    <li>
+                                                        <a id="davaBaslikDuzenle" class=" waves-effect waves-block">Düzenle</a>
+                                                    </li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li>
+                                                        <a id="davaBaslikSil" class=" waves-effect waves-block">Sil</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*Right*@
+
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <input type="file" name="files" id="files" class="btn bg-teal waves-effect waves-light" accept="application/pdf" multiple>
+                                        </div>
+                                        <div class="col-xs-offset-1 col-xs-1">
+                                            <button type="submit" class="btn bg-teal waves-effect waves-light">
+                                                <i class="material-icons">publish</i><span>Yükle</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="davaDosyaDiv">
+                            @*PDF ler gelicek*@
+
+                            @if (TempData["pdfler"] != null)
+                            {
+                                int counter = 1;
+                                <div class="panel-group" id="accordion_1" role="tablist" aria-multiselectable="true">
+                                    @foreach (var dosya in TempData["pdfler"] as List<DavaDosya>)
+                                    {
+                                        counter++;
+                                        <div class="panel panel-primary">
+                                            <div class="panel-heading" role="tab" id="headingOne_@counter">
+                                                <h4 class="panel-title">
+                                                    <a role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseOne_@counter" aria-expanded="true" aria-controls="collapseOne_@counter">
+                                                        @dosya.DavaDosyaAdi <span class="pull-right"><span class="pull-right">@dosya.EklemeTarihi.ToString("dd/MM/yy HH:mm:ss")</span></span>
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne_@counter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_@counter">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            @*<embed src="~/Assets/DavaPDF/ecc919d1-9df3-42a7-bea1-59ac3e5d027e.pdf" width="300" height="200" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">*@
+                                                            <embed src="~/Assets/DavaPDF/@dosya.Url" width="100%" height="250" type='application/pdf'>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <a target="_blank" href="~/Assets/DavaPDF/@dosya.Url" class="btn bg-teal waves-effect btn-block">
+                                                                <i class="material-icons">visibility</i>
+                                                                <span>Görüntüle</span>
+                                                            </a>
+
+                                                            <hr />
+
+                                                            <button type="button" class="btn bg-teal waves-effect dosyaAdiDegistir btn-block" data-id="@dosya.DavaDosyaId">
+                                                                <i class="material-icons">create</i>
+                                                                <span>Dosya Adı Değiştir</span>
+                                                            </button>
+
+                                                            <hr />
+
+                                                            <button type="button" class="btn bg-teal waves-effect davaDosyaSil btn-block" data-id="@dosya.DavaDosyaId">
+                                                                <i class="material-icons">create</i>
+                                                                <span>Dosyayı Sil</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-warning alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    Başlığa ait Dosya Bulunamadı.
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Assets/BSB/js/davaEdit.js"></script>
+    <script>
+    /**/
+    drpSehir.val('@Model.BirimDaire.DavaTipi.Adliye.SehirId');
+    /**/
+    drpSehir.selectpicker('render');
+
+    /**/
+    drpAdliye.val('@Model.BirimDaire.DavaTipi.AdliyeId');
+    /**/
+    drpAdliye.selectpicker('render');
+
+    /**/
+    drpDosya.val('@Model.BirimDaire.DavaTipiId');
+    /**/
+    drpDosya.selectpicker('render');
+
+    /**/
+    drpBirim.val('@Model.BirimDaireId');
+    /**/
+    drpBirim.selectpicker('render');
+
+    /**/
+    drpMuvekkil.val(@Model.TCKimlikNo);
+    /**/
+    drpMuvekkil.selectpicker('render');
+
+    </script>
+}
+

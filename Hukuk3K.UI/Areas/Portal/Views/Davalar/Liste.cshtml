@@ -1,0 +1,118 @@
+﻿@model ICollection<Dava>
+@{
+    ViewBag.Title = "Dava Listele";
+    Layout = "~/Areas/Portal/Views/Shared/_PortalLayout.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Dava Listesi
+                </h2>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="ui celled table js-basic-example dataTable" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Dosya Numarası</th>
+                                <th>Şehir</th>
+                                <th>Adliye</th>
+                                <th>Dosya</th>
+                                <th>Birim</th>
+                                <th>Açılış Tarihi</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var dava in Model)
+                            {
+                                <tr>
+                                    <td class="col-xs-1">
+                                        <a href="~/Portal/Davalar/Goruntule/@dava.DavaId" class="btn bg-teal waves-effect btn-xs">
+                                            <i class="material-icons">visibility</i>
+                                            <span>Görüntüle</span>
+                                        </a>
+                                    </td>
+                                    <td class="text-capitalize">@dava.DosyaNo</td>
+                                    <td class="text-capitalize">@dava.BirimDaire.DavaTipi.Adliye.Sehir.SehirAdi</td>
+                                    <td class="text-capitalize">@dava.BirimDaire.DavaTipi.Adliye.AdliyeAdi</td>
+                                    <td class="text-capitalize">@dava.BirimDaire.DavaTipi.DavaTipiAdi</td>
+                                    <td class="text-capitalize">@dava.BirimDaire.BirimDaireAdi</td>
+                                    <td>@dava.AcilisTarihi.ToShortDateString()</td>
+                                    <td class="text-capitalize">@dava.DavaDurum.DavaDurumAdi</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section styles{
+    <link href="~/Assets/BSB/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.semanticui.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+
+    <script src="~/Assets/BSB/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    @*<script src="~/Assets/BSB/js/pages/tables/jquery-datatable.js"></script>*@
+
+    <script>
+        $(document).ready(function () {
+            $('.datatable').dataTable({
+                bSort: false,
+                aoColumns: [{ sWidth: "45%" }, { sWidth: "45%" }, { sWidth: "10%", bSearchable: false, bSortable: false }],
+                "scrollY": "200px",
+                "scrollCollapse": true,
+                "info": true,
+                "paging": true
+            });
+        });
+
+        $(function () {
+            $('.js-basic-example').DataTable({
+                responsive: true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+                },
+                columnDefs: [{
+                    orderable: false,
+                    targets: 0
+                }],
+                select: {
+                    style: 'os',
+                    selector: 'td:first-child'
+                },
+                order: [[6, 'desc']]
+            });
+
+            //Exportable table
+            $('.js-exportable').DataTable({
+                dom: 'Bfrtip',
+                responsive: true,
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
+}
+

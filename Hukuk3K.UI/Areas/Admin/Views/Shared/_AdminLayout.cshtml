@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>3K Hukuk | @ViewBag.Title</title>
+    <link rel="icon" href="~/Assets/BSB/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="~/Assets/BSB/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Assets/BSB/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="~/Assets/BSB/plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="~/Assets/BSB/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+    <link href="~/Assets/BSB/plugins/waitme/waitMe.css" rel="stylesheet" />
+    <link href="~/Assets/BSB/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="~/Assets/BSB/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="~/Assets/BSB/css/style.css" rel="stylesheet" />
+    <link href="~/Assets/BSB/css/themes/all-themes.css" rel="stylesheet" />
+    @RenderSection("styles", required: false)
+</head>
+<body class="theme-blue-grey" lang="tr">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="/Admin/Home/Index">3K Hukuk Bürosu - Yönetim Paneli</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Admin/Login/Cikis"><i class="material-icons">power_settings_new</i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li>
+                        <a href="/Admin/Home/Index">
+                            <i class="material-icons">home</i>
+                            <span>Anasayfa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle toggled">
+                            <i class="material-icons">person</i>
+                            <span>Müvekkil İşlemleri</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="/Admin/Muvekkil/Liste">Müvekkil Listesi</a>
+                            </li>
+                            <li>
+                                <a href="/Admin/Muvekkil/Ekle">Yeni Müvekkil</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle toggled">
+                            <i class="material-icons">gavel</i>
+                            <span>Dava İşlemleri</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="/Admin/Dava/Listele">Dava Listesi</a>
+                            </li>
+                            <li>
+                                <a href="/Admin/Dava/Ekle">Yeni Dava</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                    </li>
+                    <li>
+                        <a href="/Admin/Login/Cikis">
+                            <i class="material-icons">power_settings_new</i>
+                            <span>Çıkış Yap</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; @System.DateTime.Now.Year <a href="javascript:void(0);">3K Hukuk Bürosu</a>.
+                </div>
+            </div>
+            <!-- #Footer -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                @RenderBody()
+            </div>
+        </div>
+    </section>
+
+    <script src="~/Assets/BSB/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Assets/BSB/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="~/Assets/BSB/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="~/Assets/BSB/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="~/Assets/BSB/plugins/bootstrap-notify/bootstrap-notify.js"></script>
+    <script src="~/Assets/BSB/plugins/node-waves/waves.js"></script>
+    <script src="~/Assets/BSB/plugins/autosize/autosize.js"></script>
+    <script src="~/Assets/BSB/plugins/momentjs/moment.js"></script>
+    <script src="~/Assets/BSB/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <script src="~/Assets/BSB/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="~/Assets/BSB/js/admin.js"></script>
+    <script src="~/Assets/BSB/js/pages/forms/basic-form-elements.js"></script>
+    <script src="~/Assets/BSB/js/demo.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
